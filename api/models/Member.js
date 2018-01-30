@@ -52,7 +52,7 @@ const memberSchema = new mongoose.Schema({
     },
     hashUser: {
         type: String,
-        default: md5(moment().format() + 'hashString'),
+        default: md5(Date.now() + 'hashString'),
         unique:true
     },
     dateCreated: {
