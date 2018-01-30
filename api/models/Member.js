@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const crypto = require("crypto");
+const md5 = require('md5');
 
 //random codes for mail verification
 random = (howMany, chars) => {
@@ -51,7 +52,7 @@ const memberSchema = new mongoose.Schema({
     },
     hashUser: {
         type: String,
-        default: random(12),
+        default: md5(moment().format() + 'hashString'),
         unique:true
     },
     dateCreated: {
@@ -91,4 +92,3 @@ const memberSchema = new mongoose.Schema({
 
 mongoose.model('Member', memberSchema)
 module.exports = mongoose.model('Member');
-
