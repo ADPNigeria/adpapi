@@ -46,10 +46,6 @@ const memberSchema = new mongoose.Schema({
     pollingUnit: String,
     residenceAdd: String,
     resCountry: String,
-    adminLevel: {
-        type: String,
-        default: "Member"
-    },
     hashUser: {
         type: String,
         default: md5(Date.now() + 'hashString'),
@@ -81,7 +77,10 @@ const memberSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    adminLevel:String,
+    adminLevel:{
+      type: String,
+      default: 'Member'
+    },
     Senatorial: String,
     FedConstituency: String,
     StateConstituency: String,

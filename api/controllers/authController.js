@@ -33,7 +33,7 @@ exports.auth = (req, res) => {
                 });
               })
               .catch(err => {
-                console.log(err);
+                // console.log(err);
                 res.status(500).json({
                   error: err
                 });
@@ -46,8 +46,8 @@ exports.auth = (req, res) => {
 
 exports.authlogin = (req, res, next) => {
 
-  console.log(req.body);
-  
+  // console.log(req.body);
+
   Auth.find({
     email: req.body.email
   })
@@ -86,7 +86,7 @@ exports.authlogin = (req, res, next) => {
       });
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       res.status(500).json({
         error: err
       });
