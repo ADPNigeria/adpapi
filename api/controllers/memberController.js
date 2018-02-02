@@ -51,6 +51,7 @@ exports.createMember =  (req, res) => {
         pollingUnit: req.body.pollingUnit,
         residenceAdd: req.body.residenceAdd,
         resCountry: req.body.resCountry,
+        hashUser: req.body.hashUser,
         Senatorial: req.body.Senatorial,
         FedConstituency: req.body.FedConstituency,
         StateConstituency: req.body.StateConstituency
