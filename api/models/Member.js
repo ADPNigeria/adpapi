@@ -46,11 +46,7 @@ const memberSchema = new mongoose.Schema({
     pollingUnit: String,
     residenceAdd: String,
     resCountry: String,
-    hashUser: {
-        type: String,
-        default: md5(Date.now + 'hashString'),
-        unique:true
-    },
+    hashUser: String,
     dateCreated: {
         type:Date,
         default: Date.now
