@@ -3,29 +3,29 @@ const Member = require('../models/Member');
 
 
 exports.validateRegister = (req, res, next) => {
-  
+
     const phone_number = req.body.phone_number;
     const full_name = req.body.full_name;
     const email = req.body.email;
-    
+
     req.checkBody('phone_number', 'Phone is required').notEmpty();
     req.checkBody('email', 'Email is not valid').isEmail();
     req.checkBody('full_name', 'Name is required').notEmpty( );
-    
+
 
     req.sanitize(req.body);
-    
+
     let errors = req.validationErrors();
-    
+
     if(errors) return console.log(errors);
-    
+
     next(); // there were no errors!
   };
-  
+
   exports.getAllMember = (req, res) =>{
   Member.find({})
   .exec()
-  .then( member =>{ 
+  .then( member =>{
       res.status(200).json(member)
   })
   .catch (err=>{
@@ -42,7 +42,7 @@ exports.createMember =  (req, res) => {
         full_name: req.body.full_name,
         phone_number: req.body.phone_number,
         pvc: req.body.pvc,
-        email: req.body.email, 
+        email: req.body.email,
         gender: req.body.gender,
         dateofBirth: req.body.dateofBirth,
         stName: req.body.stName,
@@ -61,8 +61,8 @@ exports.createMember =  (req, res) => {
     .then(result => {
       console.log(result);
       res.status(201).json({
-        body: result,   
-        message: "Member Registered successfully",  
+        body: result,
+        message: "Member Registered successfully",
       });
     })
     .catch(err => {
@@ -72,9 +72,9 @@ exports.createMember =  (req, res) => {
         }
       });
     });
-    
+
 };
-  
+
 exports.getMember = (req, res) => {
   let query= req.params.id
   Member.findById(req.params.id)
@@ -91,7 +91,7 @@ exports.getMember = (req, res) => {
       res.status(500).json({error:{
         message: err
       }})
-  });    
+  });
 }
 
 exports.getExist = (req, res) => {
@@ -142,14 +142,14 @@ exports.getMemberWithPhone = (req, res) => {
       res.status(500).json({error:{
         message: err
       }})
-  });    
+  });
 }
 
 exports.updateMember = (req, res) => {
-  
+
    let options = req.body;
    const updates = {};
-  
+
     for (const option of Object.keys(options)) {
       updates[option] = options[option]
     }
@@ -173,9 +173,6 @@ exports.updateMember = (req, res) => {
       res.status(500).json({error:{
         message: err
       }})
-  }); 
+  });
 
 }
-
-
- 
