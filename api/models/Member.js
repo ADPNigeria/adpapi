@@ -48,7 +48,7 @@ const memberSchema = new mongoose.Schema({
     resCountry: String,
     hashUser: {
         type: String,
-        default: md5(Date.now() + 'hashString'),
+        default: md5(Date.now + 'hashString'),
         unique:true
     },
     dateCreated: {
