@@ -4,19 +4,8 @@ const crypto = require("crypto");
 const md5 = require('md5');
 
 //random codes for mail verification
-random = (howMany, chars) => {
-    chars = chars
-        || "ABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-    let rnd = crypto.randomBytes(howMany)
-        , value = new Array(howMany)
-        , len = chars.length;
+let random = crypto.randomBytes(6).toString('hex');
 
-    for (let i = 0; i < howMany; i++) {
-        value[i] = chars[rnd[i] % len]
-    };
-
-    return value.join('');
-}
 
 const memberSchema = new mongoose.Schema({
     passport: String,
@@ -32,7 +21,6 @@ const memberSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        // unique: true,
         lowercase: true,
         trim: true,
         required: 'Please Supply an email address'
@@ -54,15 +42,15 @@ const memberSchema = new mongoose.Schema({
     MemberAuth:{
         TempID: {
             type:String,
-        default: random(6)
+        default: random
     },
         CardID: {
             type:String,
             default: ''
     },
         mobileCode:{
-            type:(String),
-        default: random(8)
+            type:String,
+        default: random
     },
     },
     SMSVerified: {

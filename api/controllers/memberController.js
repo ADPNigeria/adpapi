@@ -36,7 +36,9 @@ exports.validateRegister = (req, res, next) => {
 }
 
 exports.createMember =  (req, res) => {
-  console.log(req.body);
+    if (req.body.email === '') {
+      req.body.email = 'contact@adp.ng'
+    }
     const member = new Member({
         passport: req.body.passport,
         full_name: req.body.full_name,
