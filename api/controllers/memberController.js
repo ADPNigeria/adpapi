@@ -36,7 +36,7 @@ exports.validateRegister = (req, res, next) => {
 }
 
 exports.createMember =  (req, res) => {
-    if (req.body.email === '') {
+    if (!req.body.email) {
       req.body.email = 'contact@adp.ng'
     }
     const member = new Member({
