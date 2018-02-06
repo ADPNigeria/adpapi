@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise;
 
 const paymentSchema = new mongoose.Schema({
 
- 
+
     full_name: String,
     phone_number: String,
     email: String,
@@ -19,9 +19,9 @@ const paymentSchema = new mongoose.Schema({
     },
     time: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     }
-    
+
 
 })
  module.exports = mongoose.model('Payment', paymentSchema);

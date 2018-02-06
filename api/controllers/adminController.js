@@ -10,16 +10,15 @@ exports.createAdmin =  (req, res) => {
         level: req.body.level,
         position: req.body.position,
         nameOfLocation: req.body.nameOfLocation
-        
+
         });
 
     admin
     .save()
     .then(result => {
-      console.log(result);
-      
+
       res.status(201).json({
-        message: "Created Member successfully",  
+        message: "Created Admin successfully",
       });
     })
     .catch(err => {
@@ -29,13 +28,13 @@ exports.createAdmin =  (req, res) => {
         }
       });
     });
-    
+
 };
 
 exports.getadmin =  (req, res) => {
   let query= req.params.id
   Admin.findOne({personalInfo: req.params.id})
-  .populate("personalInfo", "-password -__v")  
+  .populate("personalInfo", "-password -__v")
   .exec()
   .then( member =>{
     if(member) {
@@ -49,13 +48,13 @@ exports.getadmin =  (req, res) => {
       res.status(500).json({error:{
         message: err
       }})
-  });    
+  });
 };
-  
+
 exports.getAllMember = (req, res) =>{
   Member.find({})
   .exec()
-  .then( member =>{  
+  .then( member =>{
       res.status(200).json(member)
   })
   .catch (err=>{
@@ -69,7 +68,7 @@ exports.getAllAdmin = (req, res) =>{
   Admin.find({})
   .populate("personalInfo", "-__v")
   .exec()
-  .then( member =>{  
+  .then( member =>{
       res.status(200).json(member)
   })
   .catch (err=>{
@@ -82,7 +81,7 @@ exports.getAllAdmin = (req, res) =>{
 exports.updateAdmin = (req, res) => {
   let options = req.body;
   const updates = {};
- 
+
    for (const option of Object.keys(options)) {
      updates[option] = options[option]
    }
@@ -106,7 +105,7 @@ exports.updateAdmin = (req, res) => {
      res.status(500).json({error:{
        message: err
      }})
- }); 
+ });
 
 }
 
@@ -124,5 +123,3 @@ exports.deleteAdmin = (req, res) => {
       });
     });
 };
-
-
