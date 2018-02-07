@@ -9,7 +9,7 @@ exports.validateRegister = (req, res, next) => {
     const email = req.body.email;
 
     req.checkBody('phone_number', 'Phone is required').notEmpty();
-    req.checkBody('email', 'Email is not valid').isEmail();
+    // req.checkBody('email', 'Email is not valid').isEmail();
     req.checkBody('full_name', 'Name is required').notEmpty( );
 
 
@@ -36,17 +36,19 @@ exports.validateRegister = (req, res, next) => {
 }
 
 exports.createMember =  (req, res) => {
-    if (!req.body.email) {
-      req.body.email = 'contact@adp.ng'
-    }
+
     const member = new Member({
         passport: req.body.passport,
         full_name: req.body.full_name,
         phone_number: req.body.phone_number,
         pvc: req.body.pvc,
-        email: req.body.email,
+        email: req.body.email || 'contect@adp.ng',
         gender: req.body.gender,
         dateofBirth: req.body.dateofBirth,
+        MemberAuth: {
+          mobileCode: req.body.mobileCode,
+          TempID: req.body.TempID,
+        },
         stName: req.body.stName,
         lgaName: req.body.lgaName,
         wardName: req.body.wardName,

@@ -22,8 +22,7 @@ const memberSchema = new mongoose.Schema({
     email: {
         type: String,
         lowercase: true,
-        trim: true,
-        required: 'Please Supply an email address'
+        trim: true
     },
     gender: String,
     pvc: String,
@@ -40,18 +39,12 @@ const memberSchema = new mongoose.Schema({
         default: Date.now
         },
     MemberAuth:{
-        TempID: {
-            type:String,
-        default: random
-    },
+        TempID: String,
         CardID: {
             type:String,
             default: ''
     },
-        mobileCode:{
-            type:String,
-        default: random
-    },
+        mobileCode:String
     },
     SMSVerified: {
         type: Boolean,
