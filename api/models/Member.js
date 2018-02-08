@@ -29,7 +29,7 @@ const memberSchema = new mongoose.Schema({
     dateofBirth: String,
     stName: String,
     lgaName: String,
-    ward: String,
+    wardName: String,
     pollingUnit: String,
     residenceAdd: String,
     resCountry: String,
