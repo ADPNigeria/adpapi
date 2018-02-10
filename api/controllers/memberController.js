@@ -42,7 +42,7 @@ exports.createMember =  (req, res) => {
         full_name: req.body.full_name,
         phone_number: req.body.phone_number,
         pvc: req.body.pvc,
-        email: req.body.email || 'contect@adp.ng',
+        email: req.body.email || 'contact@adp.ng',
         gender: req.body.gender,
         dateofBirth: req.body.dateofBirth,
         MemberAuth: {
